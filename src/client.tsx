@@ -22,7 +22,10 @@ window.addEventListener('unhandledrejection', (err, promise) => {
 const history = qhistory(createBrowserHistory(), stringify, parse)
 
 const hydrate = async () => {
-  const { components, match, params } = await asyncMatchRoutes(routes, history.location.pathname)
+  const { components, match, params } = await asyncMatchRoutes(
+    routes,
+    history.location.pathname
+  )
   const store = createStore({ history, match, params })
 
   const locals = {

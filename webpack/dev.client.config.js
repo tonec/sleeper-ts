@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
@@ -13,7 +14,7 @@ module.exports = merge(baseConfig, {
     main: [
       'react-hot-loader/patch',
       'webpack-hot-middleware/client?path=http://localhost:3001/__webpack_hmr',
-      path.resolve(ROOT_DIRECTORY, 'src/client.js')
+      path.resolve(ROOT_DIRECTORY, 'src/client.tsx')
     ]
   },
 
@@ -35,9 +36,9 @@ module.exports = merge(baseConfig, {
               name: '[name]-[hash].[ext]',
               useRelativePath: false,
               publicPath: config.paths.PUBLIC
-            },
-          },
-        ],
+            }
+          }
+        ]
       }
     ]
   },

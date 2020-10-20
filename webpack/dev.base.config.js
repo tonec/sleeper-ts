@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path')
 const webpack = require('webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
@@ -11,8 +12,8 @@ module.exports = {
 
   resolve: {
     modules: ['src', 'node_modules'],
-    extensions: ['.json', '.js'],
-    alias: { 'react-dom': '@hot-loader/react-dom' },
+    extensions: ['.json', '.js', 'ts', 'tsx'],
+    alias: { 'react-dom': '@hot-loader/react-dom' }
   },
 
   devtool: 'eval-source-map',
@@ -23,7 +24,7 @@ module.exports = {
 
       const blockedFiles = [
         'node_modules/express/lib/view.js',
-        'node_modules/require_optional/index.js',
+        'node_modules/require_optional/index.js'
       ]
 
       blockedFiles.forEach(modulePath => {
@@ -33,15 +34,24 @@ module.exports = {
       })
 
       return block
-    },
+    }
   },
 
   module: {
     rules: [
       {
-        test: /\.js?$/,
-        loader: 'babel-loader',
+        test: /\.(ts|js)x?$/,
         exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              '@babel/preset-env',
+              '@babel/preset-react',
+              '@babel/preset-typescript'
+            ]
+          }
+        }
       },
       {
         test: /\.(css)$/,
@@ -50,20 +60,20 @@ module.exports = {
             loader: MiniCssExtractPlugin.loader,
             options: {
               publicPath: config.paths.PUBLIC,
-              hmr: true,
-            },
+              hmr: true
+            }
           },
-          'css-loader',
-        ],
+          'css-loader'
+        ]
       },
       {
         test: /\.(woff|woff2)$/,
         loader: 'file-loader',
         options: {
-          name: 'fonts/[name].[ext]',
-        },
-      },
-    ],
+          name: 'fonts/[name].[ext]'
+        }
+      }
+    ]
   },
 
   plugins: [
@@ -74,7 +84,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].css',
-      ignoreOrder: false,
-    }),
-  ],
+      ignoreOrder: false
+    })
+  ]
 }

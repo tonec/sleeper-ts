@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
@@ -10,10 +11,10 @@ module.exports = merge(baseConfig, {
   target: 'node',
 
   node: {
-    __dirname: false,
+    __dirname: false
   },
 
-  entry: './src/server.js',
+  entry: './src/server.tsx',
 
   output: {
     filename: 'bundle.js',
@@ -33,9 +34,9 @@ module.exports = merge(baseConfig, {
               useRelativePath: false,
               publicPath: config.paths.PUBLIC,
               emitFile: false
-            },
-          },
-        ],
+            }
+          }
+        ]
       }
     ]
   },
