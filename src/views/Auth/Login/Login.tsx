@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { Centered } from 'components'
 import LoginFormContainer from './LoginFormContainer'
 
-function Login() {
+function Login(): ReactNode {
   return (
     <Centered title="Log in">
       <LoginFormContainer />

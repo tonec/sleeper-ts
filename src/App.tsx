@@ -8,7 +8,7 @@ import theme from 'theme'
 import './assets/stylesheets/global.css'
 import './assets/stylesheets/reset.css'
 
-const App = ({ location, route }) => {
+const App: React.FC = ({ location, route }) => {
   const [ready, setReady] = useState(false)
 
   const prevPathname = usePrevious(location.pathname)

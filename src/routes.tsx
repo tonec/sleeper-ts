@@ -1,8 +1,9 @@
-import App from 'App'
+import { RouteConfig } from 'react-router-config'
 import { NotFound } from 'components'
 import { Home, Login, Users } from 'views'
+import App from './App'
 
-export default [
+const routes: RouteConfig[] = [
   {
     component: App,
     routes: [
@@ -15,3 +16,5 @@ export default [
     ]
   }
 ]
+
+export default routes

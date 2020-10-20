@@ -1,20 +1,16 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { connect } from 'react-redux'
 import { appLoaded } from 'redux/modules/app/actions'
 import { LayoutMain, Button } from 'components'
 
-const Home = ({ dispatch }) => {
+const Home: FC = ({ dispatch }) => {
   const handleClick = () => {
     dispatch(appLoaded())
   }
 
   return (
     <LayoutMain title="Home">
-      <Button
-        primary
-        label="Click"
-        onClick={handleClick}
-      />
+      <Button primary label="Click" onClick={handleClick} />
     </LayoutMain>
   )
 }
